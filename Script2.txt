@@ -1,0 +1,62 @@
+CREATE DATABASE DBPrueba1;
+GO
+
+USE DBPrueba1;
+GO
+
+-- Creación de la tabla Usuario
+CREATE TABLE Usuario (
+    IdUsuario INT PRIMARY KEY IDENTITY,
+    Nombre VARCHAR(50),
+    Correo VARCHAR(50),
+    Clave VARCHAR(200),
+    Restablecer BIT,
+    Confirmado BIT,
+    Token VARCHAR(200)
+);
+GO
+
+-- Creación de la tabla Profesor
+CREATE TABLE Profesor (
+    IdProfesor INT PRIMARY KEY IDENTITY,
+    IdUsuario INT FOREIGN KEY REFERENCES Usuario(IdUsuario)
+);
+GO
+
+-- Creación de la tabla Materia
+CREATE TABLE Materia (
+    IdMateria INT PRIMARY KEY IDENTITY,
+    NombreMateria VARCHAR(100),
+    Calificacion DECIMAL(5, 2),
+    IdProfesor INT FOREIGN KEY REFERENCES Profesor(IdProfesor)
+);
+GO
+
+-- Creación de la tabla Grupo
+CREATE TABLE Grupo (
+    IdGrupo INT PRIMARY KEY IDENTITY,
+    NumeroGrupo INT,
+    Horario TIME,
+    IdMateria INT FOREIGN KEY REFERENCES Materia(IdMateria)
+);
+GO
+
+-- Creación de la tabla Estudiante
+CREATE TABLE Estudiante (
+    IdEstudiante INT PRIMARY KEY IDENTITY,
+    IdUsuario INT FOREIGN KEY REFERENCES Usuario(IdUsuario),
+    IdMateria INT FOREIGN KEY REFERENCES Materia(IdMateria)
+);
+GO
+
+-- Creación de la tabla Asignaciones
+CREATE TABLE Asignaciones (
+    IdAsignacion INT PRIMARY KEY IDENTITY,
+    Calificacion DECIMAL(5, 2),
+    Titulo VARCHAR(100),
+    Descripcion TEXT,
+    Adjuntos VARBINARY(MAX),
+    Entregas INT,
+    IdGrupo INT FOREIGN KEY REFERENCES Grupo(IdGrupo)
+);
+GO
