@@ -1,0 +1,51 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Seleccionar Rol</title>
+    <!-- Asegúrate de que Bootstrap esté correctamente referenciado aquí -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 40px;
+            background-color: #f5f5f5;
+        }
+
+        .card-selector {
+            margin: auto;
+            max-width: 400px;
+            padding: 40px 40px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .btn-selector {
+            width: 150px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="card-selector">
+                <h2>¿Quién eres?</h2>
+                <div>
+                    <a href="@Url.Action("Login", "Inicio", new { rol = "Estudiante" })" class="btn btn-primary m-2">Estudiante</a>
+                    <a href="@Url.Action("Login", "Inicio", new { rol = "Profesor" })" class="btn btn-secondary m-2">Profesor</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Opcional: Incluir jQuery y Bootstrap JS para funcionalidades de Bootstrap basadas en JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
